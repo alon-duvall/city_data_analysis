@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Auto-Updating Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Site</h1>
+  <p>This site auto-updates based on a scheduled GitHub Action that updates <code>data.json</code>.</p>
+
+  <h2>Current Data:</h2>
+  <pre id="data-output">Loading data...</pre>
+
+  <script>
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('data-output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('data-output').textContent = 'Failed to load data.json';
+      });
+  </script>
+</body>
+</html>

@@ -9,10 +9,10 @@
 </head>
 <body class="bg-light">
 
-<div id="navbar-placeholder"></div>
+  <div id="navbar-placeholder"></div>
 
   <script>
-    fetch("navbar.html")
+    fetch("../navbar.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("navbar-placeholder").innerHTML = html;
@@ -21,13 +21,13 @@
 
   <!-- Main Content -->
   <div class="container">
-    <h1 class="display-4">Welcome to My Site</h1>
-    <p class="lead">This site is under construction. Check back for updated analyses and data visualizations.</p>
+
 
     <h2 class="mt-5">Boston Crime Heatmap (2023–2025)</h2>
     <div class="ratio ratio-16x9 mb-4">
-      <iframe src="crime_heatmap.html" title="Crime Heatmap" style="border:0;"></iframe>
+      <iframe src="../crime_heatmap.html" title="Crime Heatmap" style="border:0;"></iframe>
     </div>
+
 
   </div>
 
@@ -37,3 +37,4 @@
 
 </body>
 </html>
+

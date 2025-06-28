@@ -2,40 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Auto-Updating Site</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      max-width: 600px;
-      margin: auto;
-      <nav>
-        <a href="index.html">Home</a> |
-        <a href="crime_heatmap.html">Crime Heatmap</a> |
-        <a href="about.html">About</a>
-      </nav>
-    }
-    pre {
-      background: #f0f0f0;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-  </style>
+  <title>City Data Analysis</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <h2>Explore More</h2>
-  <ul>
-    <li><a href="crime/">Crime Data Page</a></li>
-  </ul>
-  <h1>Welcome to My Site</h1>
-  <p>Under construction!</p>
+<body class="bg-light">
 
-  <h2>Boston Crime Heatmap (2023–2025)</h2>
-  <iframe src="crime_heatmap.html" width="100%" height="600" style="border:none;"></iframe>
-  
-  <h2>Current Data:</h2>
-  <pre id="data-output">Loading data...</pre>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="#">City Data</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="crime_heatmap.html">Crime Heatmap</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="display-4">Welcome to My Site</h1>
+    <p class="lead">This site is under construction. Check back for updated analyses and data visualizations.</p>
+
+    <h2 class="mt-5">Boston Crime Heatmap (2023–2025)</h2>
+    <div class="ratio ratio-16x9 mb-4">
+      <iframe src="crime_heatmap.html" title="Crime Heatmap" style="border:0;"></iframe>
+    </div>
+
+    <h2>Explore More</h2>
+    <ul>
+      <li><a href="crime/">Crime Data Page</a></li>
+    </ul>
+
+    <h2 class="mt-4">Current Data:</h2>
+    <pre class="bg-white p-3 border rounded" id="data-output">Loading data...</pre>
+  </div>
+
+  <!-- Bootstrap JS (optional, for interactive components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Your Data Fetch Script -->
   <script>
     fetch('data.json')
       .then(response => response.json())

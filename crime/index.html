@@ -19,6 +19,16 @@
       });
   </script>
 
+  
+<script>
+  fetch("entropy_table.html?v=" + Date.now())
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("entropy-table-placeholder").innerHTML = html;
+    });
+</script>
+
+  
 <div class="container my-5">
   
   <!-- Table of Contents -->
@@ -41,6 +51,10 @@
           <div class="accordion-body">
             <div class="ratio ratio-16x9">
               <iframe src="drug_heatmap_hour07_09.html" title="Drug Heatmap" style="border:0;"></iframe>
+            </div>
+            <h4 class="mt-4">Recent Entropy Calculations</h4>
+            <div class="table-responsive">
+              <div id="entropy-table-placeholder">Loading...</div>
             </div>
           </div>
         </div>

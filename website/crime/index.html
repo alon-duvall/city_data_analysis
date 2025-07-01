@@ -21,7 +21,7 @@
 
   
 <script>
-  fetch("../results/tables/entropy_table.html?v=" + Date.now())
+  fetch("../../results/tables/entropy_table.html?v=" + Date.now())
     .then(res => res.text())
     .then(html => {
       document.getElementById("entropy-table-placeholder").innerHTML = html;
@@ -50,7 +50,7 @@
         <div id="section1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#crimeAccordion">
           <div class="accordion-body">
             <div class="ratio ratio-16x9">
-              <iframe src="drug_heatmap_hour07_09.html" title="Drug Heatmap" style="border:0;"></iframe>
+              <iframe src="../../results/figures/drug_heatmap_hour07_09.html" title="Drug Heatmap" style="border:0;"></iframe>
             </div>
             <p style="max-width: 800px;">
               The crime incident reports (2023–2025) available on the Analyze Boston website include information such as the hour of the incident, the type of crime, and the location where it occurred.  
@@ -80,7 +80,7 @@
           </p>
           <div class="accordion-body">
             <div class="ratio ratio-16x9">
-              <iframe src="crime_heatmap.html" title="Crime Heatmap" style="border:0;"></iframe>
+              <iframe src="../../results/figures/crime_heatmap.html" title="Crime Heatmap" style="border:0;"></iframe>
             </div>
           </div>
         </div>

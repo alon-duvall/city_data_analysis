@@ -40,7 +40,30 @@
 
   <!-- Accordion Sections -->
   <div class="accordion" id="crimeAccordion">
- <!-- Section 1 -->
+    
+  <!-- Section -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section2" aria-expanded="false" aria-controls="section2">
+            Needle Pickup Calls (2023–2025)
+          </button>
+        </h2>
+        <div id="section2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#crimeAccordion">
+          <p>
+           The plot below shows a simple time series of daily 311 requests for needle pickups since 2023.
+          </p>
+          <div class="accordion-body">
+            <div class="ratio ratio-16x9">
+              <iframe src="../results/figures/needle_pickup_timeseries.png" title="Crime Heatmap" style="border:0;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+ <!-- Section -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="heading1">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1" aria-expanded="true" aria-controls="section1">
@@ -67,7 +90,7 @@
         </div>
       </div>
 
-      <!-- Section 2 -->
+      <!-- Section -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="heading2">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section2" aria-expanded="false" aria-controls="section2">

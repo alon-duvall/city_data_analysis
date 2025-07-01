@@ -21,7 +21,7 @@
 
   
 <script>
-  fetch("entropy_table.html?v=" + Date.now())
+  fetch("../../results/entropy_table.html?v=" + Date.now())
     .then(res => res.text())
     .then(html => {
       document.getElementById("entropy-table-placeholder").innerHTML = html;

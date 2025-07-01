@@ -8,7 +8,7 @@ from folium.plugins import HeatMap
 # -------------------------------
 # Step 1: Load CSV and Create SQLite Database
 # -------------------------------
-
+#Gets the 2023-2025 Boston Crime data file
 csv_path = os.path.expanduser("~/Downloads/tmpqlb4rmud.csv")
 df_csv = pd.read_csv(csv_path)
 

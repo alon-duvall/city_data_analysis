@@ -4,47 +4,49 @@ import matplotlib.pyplot as plt
 
 API_URL = "https://data.boston.gov/api/3/action/datastore_search_sql"
 
-# Resource IDs for 311 Service Requests (2023–2025)
-calls_2023_id = "e6013a93-1321-4f2a-bf91-8d8a02f1e62f"
-calls_2024_id = "dff4d804-5031-443a-8409-8344efd0e5c8"
-calls_2025_id = "9d7c2214-4709-478a-a2e8-fb2020a5bb94"
+# Resource IDs for 311 Service Requests (2018–2025)
+resource_ids = {
+    2018: "2be28d90-3a90-4af1-a3f6-f28c1e25880a",
+    2019: "ea2e4696-4a2d-429c-9807-d02eb92e0222",
+    2020: "6ff6a6fd-3141-4440-a880-6f60a37fe789",
+    2021: "f53ebccd-bc61-49f9-83db-625f209c95f5",
+    2022: "81a7b022-f8fc-4da5-80e4-b160058ca207",
+    2023: "e6013a93-1321-4f2a-bf91-8d8a02f1e62f",
+    2024: "dff4d804-5031-443a-8409-8344efd0e5c8",
+    2025: "9d7c2214-4709-478a-a2e8-fb2020a5bb94",
+}
 
-# SQL builder for each year
 def needle_pickup_sql(resource_id):
     return f"""
-        SELECT "open_dt"
+        SELECT open_dt
         FROM "{resource_id}"
-        WHERE "case_title" = 'Needle Pickup'
+        WHERE case_title = 'Needle Pickup'
         LIMIT 100000
     """
 
-# Fetch and convert to datetime
-def fetch_open_dates(sql):
+def fetch_open_dates(resource_id):
+    sql = needle_pickup_sql(resource_id)
     response = requests.get(API_URL, params={"sql": sql})
     df = pd.DataFrame(response.json()["result"]["records"])
     df["open_dt"] = pd.to_datetime(df["open_dt"], errors="coerce")
-    return df
+    return df[["open_dt"]]
 
-# Fetch all three years
-calls_2023 = fetch_open_dates(needle_pickup_sql(calls_2023_id))
-calls_2024 = fetch_open_dates(needle_pickup_sql(calls_2024_id))
-calls_2025 = fetch_open_dates(needle_pickup_sql(calls_2025_id))
+# Fetch and combine all years
+all_dataframes = [fetch_open_dates(rid) for rid in resource_ids.values()]
+all_calls = pd.concat(all_dataframes, ignore_index=True)
 
-# Combine and group by day
-all_calls = pd.concat([calls_2023, calls_2024, calls_2025], ignore_index=True)
+# Group by day
 needle_daily = all_calls.groupby(all_calls["open_dt"].dt.date).size()
 
 # Plot
 plt.figure(figsize=(12, 6))
 plt.plot(needle_daily.index, needle_daily.values, label="311 Needle Pickup", linewidth=2)
-plt.title("Daily 311 Needle Pickup Calls (2023–2025)")
+plt.title("Daily 311 Needle Pickup Calls (2018–2025)")
 plt.xlabel("Date")
 plt.ylabel("Number of Reports")
 plt.grid(True)
 plt.xticks(rotation=45)
 plt.tight_layout()
-
-
-# Save the figure
-plt.savefig("needle_pickup_timeseries.png", dpi=300)  # or .svg for vector format
+plt.savefig("needle_pickup_timeseries.png", dpi=300)
 plt.show()
+

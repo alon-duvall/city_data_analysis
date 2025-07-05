@@ -1,10 +1,10 @@
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+from statsmodels.nonparametric.smoothers_lowess import lowess
 
 API_URL = "https://data.boston.gov/api/3/action/datastore_search_sql"
 
-# Resource IDs for 311 Service Requests (2018–2025)
 resource_ids = {
     2018: "2be28d90-3a90-4af1-a3f6-f28c1e25880a",
     2019: "ea2e4696-4a2d-429c-9807-d02eb92e0222",
@@ -37,8 +37,10 @@ all_calls = pd.concat(all_dataframes, ignore_index=True)
 
 # Group by day
 needle_daily = all_calls.groupby(all_calls["open_dt"].dt.date).size()
+needle_daily = needle_daily.sort_index()
+needle_daily.index = pd.to_datetime(needle_daily.index)
 
-# Plot
+# Plot raw data
 plt.figure(figsize=(12, 6))
 plt.plot(needle_daily.index, needle_daily.values, label="311 Needle Pickup", linewidth=2)
 plt.title("Daily 311 Needle Pickup Calls (2018–2025)")
@@ -47,6 +49,19 @@ plt.ylabel("Number of Reports")
 plt.grid(True)
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig("needle_pickup_timeseries.png", dpi=300)
 plt.show()
 
+# LOESS smoothing
+date_nums = needle_daily.index.map(pd.Timestamp.toordinal)
+smoothed = lowess(needle_daily.values, date_nums, frac=0.04, return_sorted=False)
+
+# Plot LOESS-smoothed curve
+plt.figure(figsize=(12, 6))
+plt.plot(needle_daily.index, smoothed, color="orange", linewidth=2, label="LOESS Smoothed")
+plt.title("LOESS Smoothing of Daily 311 Needle Pickup Calls")
+plt.xlabel("Date")
+plt.ylabel("Smoothed Reports")
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()

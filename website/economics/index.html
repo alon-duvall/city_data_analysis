@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>City Data Analysis</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="bg-light">
+
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch("../common_assets/navbar.html?v=" + Date.now())
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-placeholder").innerHTML = html;
+      });
+  </script>
+
+  
+
+  
+<div class="container my-5">
+  
+  <!-- Table of Contents -->
+    <h2>Table of Contents</h2>
+    <ul class="list-group mb-4">
+      <li class="list-group-item"><a href="#section1">Boston Permits Changes (2023-2024)</a></li>
+    </ul>
+
+  <!-- Accordion Sections -->
+  <div class="accordion" id="economicsAccordion">
+  
+ <!-- Section -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1" aria-expanded="true" aria-controls="section1">
+           Boston Permits Changes (2023-2024)
+          </button>
+        </h2>
+        <div id="section1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#economicsAccordion">
+          <div class="accordion-body">
+            <div class="ratio ratio-16x9">
+              <iframe src="../results/figures/boston_permit_density_change_map_2023_to_2024.html" title="Drug Heatmap" style="border:0;"></iframe>
+            </div>
+            <p style="max-width: 800px;">
+              Here we see a heat map indicating permit changes from 2023 to 2024. Blue indicates generally more permits being issued in the region.
+            </p>
+            <h4 class="mt-4">Permits change</h4>
+            <div class="table-responsive">
+              <div id="permits-heatmap-placeholder">Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+  
+
+    </div>
+  </div>
+  
+
+  <!-- Bootstrap JS (optional, for interactive components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
+

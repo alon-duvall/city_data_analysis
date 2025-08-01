@@ -3,7 +3,7 @@ name: Deploy GitHub Pages Website
 on:
   push:
     branches:
-      - alon-duvall-patch-1 # Adjust this if your primary branch is 'master' or something else
+      - main # Adjust this if your primary branch is 'master' or something else
   workflow_dispatch: # Allows you to manually trigger the workflow from the 'Actions' tab
 
 # Sets permissions for the GITHUB_TOKEN to allow deployment to GitHub Pages

@@ -47,14 +47,11 @@
             </div>
             <p style="max-width: 800px;">
               This heatmap shows changes in building permit activity between 2023 and 2024. Regions marked in blue indicate an increase in permits issued, while red indicates a decrease.
-            </p>
-            <p>
+
               The map was generated using data from the "Approved Building Permits" dataset available at <a href="https://data.boston.gov/">data.boston.gov</a> for the years 2023 and 2024. For each year, we used Gaussian kernel density estimation to produce a continuous spatial distribution of where permits were issued.
-            </p>
-            <p>
+
               These distributions were then scaled by the total number of permits in each year. Finally, the 2023-scaled distribution was subtracted from the 2024-scaled distribution. Positive differences (more permits in 2024) are shown in blue; negative differences (fewer permits) are shown in red.
-            </p>
-            <p>
+
               The heatmap provides a rough indication of where construction activity is increasing, which may loosely correlate with areas undergoing gentrification. However, note some caveats: the kernel density estimation may have oversmoothed the data, and permit levels in specific regions can vary year to year, so this map should not be interpreted as a definitive indicator of long-term growth.
             </p>
 

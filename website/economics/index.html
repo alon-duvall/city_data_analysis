@@ -21,14 +21,13 @@
 
   
 
-
   
 <div class="container my-5">
   
   <!-- Table of Contents -->
     <h2>Table of Contents</h2>
     <ul class="list-group mb-4">
-      <li class="list-group-item"><a href="#section1">Boston Permits Changes 2023 to 2024</a></li>
+      <li class="list-group-item"><a href="#section1">Boston Permits Changes (2023-2024)</a></li>
     </ul>
 
   <!-- Accordion Sections -->
@@ -38,24 +37,20 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="heading1">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1" aria-expanded="true" aria-controls="section1">
-            Boston Drug Crimes between 7AM and 9AM (2023–2025)
+           Boston Permits Changes (2023-2024)
           </button>
         </h2>
         <div id="section1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#economicsAccordion">
           <div class="accordion-body">
             <div class="ratio ratio-16x9">
-              <iframe src="../results/figures/drug_heatmap_hour07_09.html" title="Drug Heatmap" style="border:0;"></iframe>
+              <iframe src="../results/figures/boston_permit_density_change_map_2023_to_2024.html" title="Drug Heatmap" style="border:0;"></iframe>
             </div>
             <p style="max-width: 800px;">
-              The crime incident reports (2023–2025) available on the Analyze Boston website include information such as the hour of the incident, the type of crime, and the location where it occurred.  
-              
-              In this section, we filter the data by crime type and time of day, then compute the <strong>entropy</strong> of the location distribution—measuring how spread out or concentrated the incidents are.
-              
-              Our analysis shows that <strong>early morning drug offenses</strong> tend to be less random and more geographically concentrated, often occurring in just a few specific areas across Boston.
+              Here we see a heat map indicating permit changes from 2023 to 2024. Blue indicates generally more permits being issued in the region.
             </p>
-            <h4 class="mt-4">Lowest 10 Entropy Calculations</h4>
+            <h4 class="mt-4">Permits change</h4>
             <div class="table-responsive">
-              <div id="entropy-table-placeholder">Loading...</div>
+              <div id="permits-heatmap-placeholder">Loading...</div>
             </div>
           </div>
         </div>

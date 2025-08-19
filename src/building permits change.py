@@ -154,7 +154,7 @@ def create_density_difference_heatmap():
             cell_value = diff_grid[i, j]
             rgba_color = colormap(norm(cell_value))
             hex_color = colors.to_hex(rgba_color)
-            fill_opacity = abs(cell_value) / max_abs_diff * 2.7 if max_abs_diff > 0 else 0
+            fill_opacity = abs(cell_value) / max_abs_diff * 1.0 if max_abs_diff > 0 else 0
             
             # Correctly index the 2D grid arrays
             south = grid_lat[i, j]
